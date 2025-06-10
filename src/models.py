@@ -22,7 +22,8 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            "name": self.name
+            "name": self.name,
+
         }
 
 
@@ -48,7 +49,6 @@ class Planets(db.Model):
             "gravity": self.gravity,
             "image": self.image
         }
-
 
 class FavPlanet(db.Model):
     __tablename__ = "favplanet"
