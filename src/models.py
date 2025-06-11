@@ -6,7 +6,6 @@ from typing import List
 
 db = SQLAlchemy()
 
-
 class User(db.Model):
     __tablename__ = "user"
 
@@ -66,8 +65,7 @@ class FavPlanet(db.Model):
             "planet_id": self.planet_id,
             "user_id": self.user_id
         }
-
-
+    
 class People(db.Model):
     __tablename__ = "people"
 
@@ -92,7 +90,6 @@ class People(db.Model):
             "image": self.image,
             "planet_id": self.planet_id
         }
-
 
 class FavPeople(db.Model):
     __tablename__ = "favpeople"

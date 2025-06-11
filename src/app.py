@@ -118,6 +118,8 @@ def handle_get_single_character(people_id):
         "message" : 'Everything went well'
     }
 
+    return jsonify(response_body), 200
+
 #get/users/favorites/user.id 
 
 @app.route('/users/<int:user_id>/favorites', methods=['GET'])
@@ -139,14 +141,11 @@ def handle_get_user_favorites(user_id):
 
     return jsonify(response_body), 200
 
-#post/favorite/planet/planet.id
+#post/users/<int:user_id>/favorite_planets
 
-@app.route('/favorite/planet/<int:planet_id>', methods=['POST'])
+@app.route('/users/<int:user_id>/favorite_planets', methods=['POST'])
 def handle_post_favorite_planet(planet_id,):
 
-    if not request.is_json:
-        return jsonify({"error": "Unsupported Media Type: Content-Type must be application/json"}), 415
-    
     data = request.get_json()
 
     if 'planets_id' in data:
@@ -154,7 +153,6 @@ def handle_post_favorite_planet(planet_id,):
             new_fav = FavPlanet( planet_id= planet_id)
 
     
-
     db.session.add(new_fav)
     db.session.commit()
     return jsonify({"msg": "Favorite added"}), 201
